@@ -237,3 +237,20 @@ def test_high_unrest_drains_belief():
     world.regions[0].unrest = 80
     result = resolve_turn(world, make_orders(), seed=0)
     assert result.world.belief.aggregate < 70
+
+
+# ---------------------------------------------------------------------------
+# Region model — adjacency removed
+# ---------------------------------------------------------------------------
+
+def test_region_has_no_adjacent_region_ids():
+    """adjacent_region_ids was removed from Region; adjacency is computed from Delaunay."""
+    r = Region(id="reg_test", name="Test")
+    assert "adjacent_region_ids" not in Region.model_fields, \
+        "adjacent_region_ids should not exist on Region (use Delaunay triangulation instead)"
+
+
+def test_region_serialises_without_adjacent_field():
+    r = Region(id="reg_test", name="Test", lon=10.0, lat=20.0)
+    dumped = r.model_dump()
+    assert "adjacent_region_ids" not in dumped

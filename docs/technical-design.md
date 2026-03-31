@@ -138,7 +138,7 @@ The game is divided into two components with a clean boundary. **Python owns all
 ```
 
 **Data flow per turn:**
-1. Player opens the client at `https://{userid}.github.io/conspiracy`
+1. Player opens the client at `https://cnspr.github.io`
 2. Client fetches world state JSON from the player's fork via GitHub raw content API
 3. Player composes orders in the Orders panel; client opens a PR via GitHub API
 4. CI triggers Python simulation engine on the PR
@@ -183,10 +183,10 @@ Player can overlay their own stats against rivals' public metrics (read from riv
 
 ### 3.2 GitHub as World Storage
 
-Each player world is a **fork** of the canonical `conspiracy` repository. World state is serialised as versioned JSON committed to that fork.
+Each player world is a **fork** of the canonical `world` repository. World state is serialised as versioned JSON committed to that fork.
 
 ```
-conspiracy/                        ← canonical upstream (god-tier defaults)
+world/                             ← canonical upstream (god-tier defaults)
   /{userid}/                       ← all objects owned by this player
     world/
       factions.json

@@ -146,19 +146,19 @@ GEO_REGIONS = {
 }
 ```
 
-### 7.2 Voronoi Cell Generation
+### 7.2 Delaunay Triangulation and Voronoi Cell Generation
 
-Region polygons are **not hand-authored**. They are computed once at startup from the adjacency graph declared in `map.json`.
+Region polygons are **not hand-authored**. They are computed once at startup from the seed positions in `map.json` using spherical Delaunay triangulation. **No adjacency lists are stored in `map.json`** — adjacency is derived on-the-fly from the triangulation.
 
-Every region (land, sea, and polar) has a seed `(lon, lat)` and an `adjacent_region_ids` list in `map.json`. The map client loads this file at startup and builds a lookup from normalized region key to seed position and neighbour list. Sea regions are included as seeds even though they are not rendered — their seeds act as bisector anchors that bound the cells of adjacent coastal land regions.
+Every region (land, sea, and polar) has a seed `(lon, lat)` in `map.json`. Sea regions are included as seeds even though they are not rendered — their seeds act as bisector anchors that bound the cells of adjacent coastal land regions.
 
-For each non-polar region, cell vertices are computed by the following process. The seed is projected to equal-area space as `(lon, sin(lat°))`; Lambert cylindrical projection keeps high-latitude seeds from dominating. The cell starts as the full EA bounding box `[−180, −1, 180, 1]`. For each declared adjacent region, the polygon is clipped by the perpendicular bisector in EA space between the two seeds: the bisector passes through the midpoint of the two projected seeds and is normal to the vector between them. After all neighbour bisectors are applied, the cell holds exactly the EA points closer to this seed than to any declared neighbour. When two adjacent seeds straddle the antimeridian, the shorter-path longitude difference is used so the bisector falls near the antimeridian rather than the prime meridian.
+**Delaunay triangulation.** For every triple of seeds `(i, j, k)`, the two candidate points on the sphere equidistant from all three are computed as the intersection of the bisector planes `(a−b)` and `(b−c)` (cross product of their normals, normalised). A candidate vertex is valid — and the triple forms a Delaunay triangle — if and only if no other seed is closer to that point than the three defining seeds. Each valid vertex is shared among exactly the three cells it belongs to, so adjacent cell borders share identical coordinates with no floating-point drift.
 
-The clipped EA polygon is then further clipped to the latitude band 60°S–75°N. This prevents any non-polar cell from reaching the bounding-box corners, which map to the geographic poles and would otherwise produce distorted wedge shapes. Cell vertices are then inverse-projected back to lon/lat via `lat = asin(y) · 180/π`, and each polygon edge is subdivided along the great circle arc connecting its endpoints (SLERP, at most 4° per segment) so edges follow the sphere surface rather than cutting through it when rendered.
+**Adjacency from triangulation.** Every edge `(i, j)` of a Delaunay triangle is a Delaunay edge, meaning those two seeds are natural neighbours. The full adjacency graph is collected during the triple enumeration at no extra cost.
 
-The arctic (north of 75°N) and antarctica (south of 60°S) regions are not built from the adjacency graph. They are explicit spherical-cap polygons: a sequence of points sampled every 2° of longitude along the bounding latitude circle, closed with the pole vertex. Dense sampling keeps each SLERP arc short enough (≈0.5°) to follow the latitude circle instead of bowing toward the equator.
+**Voronoi cells.** Each seed's Voronoi cell is the convex hull (on the sphere) of all valid vertices belonging to that seed. Vertices are sorted by angle around the seed's tangent frame, then each polygon edge is subdivided along the great circle arc connecting its endpoints (SLERP, at most 4° per segment) so edges follow the sphere surface rather than cutting through it when rendered.
 
-**Adjacency requirements.** Every region must have at least three declared neighbours. With fewer than three neighbours, the half-plane intersection cannot close into a bounded polygon and the cell degenerates.
+**Polar regions.** The arctic (north of 75°N) and antarctica (south of 60°S) regions are explicit spherical-cap polygons: a sequence of points sampled every 2° of longitude along the bounding latitude circle, closed with the pole vertex. Dense sampling keeps each SLERP arc short enough (≈0.5°) to follow the latitude circle instead of bowing toward the equator.
 
 ### 7.2a Hemisphere Clipping
 

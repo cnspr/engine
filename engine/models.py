@@ -86,13 +86,12 @@ class Faction(BaseModel):
 # ---------------------------------------------------------------------------
 
 class Region(BaseModel):
-    # Static fields — sourced from conspiracy-game/world/map.json (game master only)
+    # Static fields — sourced from engine/world/map.json (game master only)
     id: str
     name: str
-    adjacent_region_ids: list[str] = Field(default_factory=list)
     lon: Optional[float] = None
     lat: Optional[float] = None
-    # Dynamic fields — sourced from conspiracy/shared/regions.json (written each turn)
+    # Dynamic fields — sourced from world/shared/regions.json (written each turn)
     # No single owner — regions are contested. Each faction holds a share of influence.
     faction_influence: dict[str, float] = Field(default_factory=dict)
     population: int = 1000

@@ -8,24 +8,25 @@ import os
 from pathlib import Path
 from .models import PlayerWorld, SharedWorld, Economy, BeliefIndex, Region
 
-# Static region topology — lives in conspiracy-game/world/map.json (this repo).
-MAP_PATH = Path(__file__).resolve().parent.parent / "static" / "world" / "map.json"
+# Static region topology — lives in engine/world/map.json (this repo).
+# Adjacency is NOT stored here; it is computed from Delaunay triangulation in the browser client.
+MAP_PATH = Path(__file__).resolve().parent.parent / "world" / "map.json"
 
 
 def _default_world_root() -> Path:
     # In CI: CONSPIRACY_WORLD_ROOT is set to $GITHUB_WORKSPACE (root of the
-    # conspiracy repo checkout, where player dirs live at the top level).
+    # world repo checkout, where player dirs live at the top level).
     # Locally: fall back to ../world relative to this package for dev fixtures.
     env = os.environ.get('CONSPIRACY_WORLD_ROOT')
     if env:
         return Path(env)
-    return Path(__file__).resolve().parent.parent.parent / "conspiracy"
+    return Path(__file__).resolve().parent.parent.parent / "world"
 
 
 WORLD_ROOT = _default_world_root()
 
 # Static fields carried by map.json
-_STATIC_FIELDS = {"id", "name", "adjacent_region_ids", "lon", "lat"}
+_STATIC_FIELDS = {"id", "name", "lon", "lat"}
 
 
 def world_dir(userid: str) -> Path:
@@ -33,7 +34,7 @@ def world_dir(userid: str) -> Path:
 
 
 def load_map() -> list[dict]:
-    """Read static region descriptors from conspiracy-game/world/map.json."""
+    """Read static region descriptors from engine/world/map.json."""
     return json.loads(MAP_PATH.read_text()) if MAP_PATH.exists() else []
 
 
@@ -52,7 +53,7 @@ def load_regions() -> list[dict]:
 
 
 def save_regions(regions) -> None:
-    """Write only dynamic fields to conspiracy/shared/regions.json."""
+    """Write only dynamic fields to world/shared/regions.json."""
     d = WORLD_ROOT / "shared"
     d.mkdir(parents=True, exist_ok=True)
     dynamic = [

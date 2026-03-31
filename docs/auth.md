@@ -25,14 +25,14 @@ Fine-grained tokens scope permissions per repository, reducing exposure if the t
 1. Go to **GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens**
 2. Click **Generate new token**
 3. Set **Resource owner** to your account
-4. Under **Repository access**, select **Only select repositories** → choose your `conspiracy` fork
+4. Under **Repository access**, select **Only select repositories** → choose your `world` fork
 5. Under **Repository permissions**, set:
    - **Contents**: Read and write (create/update files and branches)
    - **Pull requests**: Read and write (open PRs)
    - **Metadata**: Read (required — auto-selected)
 6. Click **Generate token**
 
-This token can only touch your `conspiracy` fork, nothing else in your account.
+This token can only touch your `world` fork, nothing else in your account.
 
 ---
 
@@ -64,7 +64,7 @@ On a 401 response from the GitHub API, the client clears the stored token and re
 ## Full Turn Flow
 
 ```
-Player opens https://{userid}.github.io/conspiracy
+Player opens https://cnspr.github.io
     │
     ▼
 [1] Auth check — is a token in localStorage?
@@ -73,7 +73,7 @@ Player opens https://{userid}.github.io/conspiracy
     │
     ▼
 [2] Load world state
-    │   GET raw.githubusercontent.com/{userid}/conspiracy/main/world/{userid}/*.json
+    │   GET raw.githubusercontent.com/{userid}/world/main/{userid}/*.json
     │   Falls back to canonical repo if player's fork has no data yet
     │
     ▼

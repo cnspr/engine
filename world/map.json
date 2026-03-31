@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "reg_alaska",
+    "name": "Alaska",
+    "lon": -150.0,
+    "lat": 63.0
+  },
+  {
+    "id": "reg_canada_west",
+    "name": "Canada West",
+    "lon": -120.0,
+    "lat": 59.5
+  },
+  {
+    "id": "reg_canada_east",
+    "name": "Canada East",
+    "lon": -76.0,
+    "lat": 57.5
+  },
+  {
+    "id": "reg_greenland",
+    "name": "Greenland",
+    "lon": -38.0,
+    "lat": 72.0
+  },
+  {
+    "id": "reg_usa_pacific",
+    "name": "Usa Pacific",
+    "lon": -119.5,
+    "lat": 40.5
+  },
+  {
+    "id": "reg_usa_mountain",
+    "name": "Usa Mountain",
+    "lon": -108.5,
+    "lat": 40.5
+  },
+  {
+    "id": "reg_usa_great_plains",
+    "name": "Usa Great Plains",
+    "lon": -98.0,
+    "lat": 42.5
+  },
+  {
+    "id": "reg_usa_midwest",
+    "name": "Usa Midwest",
+    "lon": -86.5,
+    "lat": 42.0
+  },
+  {
+    "id": "reg_usa_northeast",
+    "name": "Usa Northeast",
+    "lon": -73.5,
+    "lat": 43.5
+  },
+  {
+    "id": "reg_usa_mid_atlantic",
+    "name": "Usa Mid Atlantic",
+    "lon": -73.5,
+    "lat": 38.0
+  },
+  {
+    "id": "reg_usa_south_central",
+    "name": "Usa South Central",
+    "lon": -93.5,
+    "lat": 30.5
+  },
+  {
+    "id": "reg_usa_southeast",
+    "name": "Usa Southeast",
+    "lon": -81.0,
+    "lat": 30.5
+  },
+  {
+    "id": "reg_mexico",
+    "name": "Mexico",
+    "lon": -102.5,
+    "lat": 23.0
+  },
+  {
+    "id": "reg_central_america",
+    "name": "Central America",
+    "lon": -84.5,
+    "lat": 13.0
+  },
+  {
+    "id": "reg_caribbean_west",
+    "name": "Caribbean West",
+    "lon": -81.0,
+    "lat": 22.0
+  },
+  {
+    "id": "reg_caribbean_east",
+    "name": "Caribbean East",
+    "lon": -66.0,
+    "lat": 18.0
+  },
+  {
+    "id": "reg_colombia_venezuela",
+    "name": "Colombia Venezuela",
+    "lon": -71.0,
+    "lat": 6.0
+  },
+  {
+    "id": "reg_guiana",
+    "name": "Guiana",
+    "lon": -54.5,
+    "lat": 3.0
+  },
+  {
+    "id": "reg_ecuador_peru",
+    "name": "Ecuador Peru",
+    "lon": -75.0,
+    "lat": -7.0
+  },
+  {
+    "id": "reg_bolivia",
+    "name": "Bolivia",
+    "lon": -62.5,
+    "lat": -16.5
+  },
+  {
+    "id": "reg_brazil_north",
+    "name": "Brazil North",
+    "lon": -57.0,
+    "lat": 0.0
+  },
+  {
+    "id": "reg_brazil_northeast",
+    "name": "Brazil Northeast",
+    "lon": -42.5,
+    "lat": -9.5
+  },
+  {
+    "id": "reg_brazil_central",
+    "name": "Brazil Central",
+    "lon": -51.0,
+    "lat": -14.0
+  },
+  {
+    "id": "reg_brazil_south",
+    "name": "Brazil South",
+    "lon": -50.5,
+    "lat": -27.0
+  },
+  {
+    "id": "reg_argentina",
+    "name": "Argentina",
+    "lon": -62.0,
+    "lat": -39.0
+  },
+  {
+    "id": "reg_chile",
+    "name": "Chile",
+    "lon": -71.0,
+    "lat": -37.0
+  },
+  {
+    "id": "reg_iceland",
+    "name": "Iceland",
+    "lon": -19.0,
+    "lat": 65.0
+  },
+  {
+    "id": "reg_ireland",
+    "name": "Ireland",
+    "lon": -8.0,
+    "lat": 53.5
+  },
+  {
+    "id": "reg_england_wales",
+    "name": "England Wales",
+    "lon": -1.5,
+    "lat": 53.0
+  },
+  {
+    "id": "reg_scotland",
+    "name": "Scotland",
+    "lon": -3.0,
+    "lat": 58.0
+  },
+  {
+    "id": "reg_norway",
+    "name": "Norway",
+    "lon": 19.0,
+    "lat": 64.5
+  },
+  {
+    "id": "reg_sweden",
+    "name": "Sweden",
+    "lon": 19.0,
+    "lat": 62.5
+  },
+  {
+    "id": "reg_finland",
+    "name": "Finland",
+    "lon": 28.0,
+    "lat": 65.0
+  },
+  {
+    "id": "reg_denmark",
+    "name": "Denmark",
+    "lon": 12.0,
+    "lat": 56.0
+  },
+  {
+    "id": "reg_netherlands_belgium",
+    "name": "Netherlands Belgium",
+    "lon": 5.0,
+    "lat": 52.0
+  },
+  {
+    "id": "reg_portugal",
+    "name": "Portugal",
+    "lon": -8.0,
+    "lat": 39.0
+  },
+  {
+    "id": "reg_spain_north",
+    "name": "Spain North",
+    "lon": -2.0,
+    "lat": 42.5
+  },
+  {
+    "id": "reg_spain_south",
+    "name": "Spain South",
+    "lon": -4.0,
+    "lat": 38.5
+  },
+  {
+    "id": "reg_france_north",
+    "name": "France North",
+    "lon": 2.0,
+    "lat": 49.5
+  },
+  {
+    "id": "reg_france_south",
+    "name": "France South",
+    "lon": 3.0,
+    "lat": 44.5
+  },
+  {
+    "id": "reg_germany_north",
+    "name": "Germany North",
+    "lon": 12.0,
+    "lat": 54.0
+  },
+  {
+    "id": "reg_germany_south",
+    "name": "Germany South",
+    "lon": 12.0,
+    "lat": 49.5
+  },
+  {
+    "id": "reg_switzerland_austria",
+    "name": "Switzerland Austria",
+    "lon": 12.0,
+    "lat": 47.5
+  },
+  {
+    "id": "reg_italy_north",
+    "name": "Italy North",
+    "lon": 11.5,
+    "lat": 45.5
+  },
+  {
+    "id": "reg_italy_south",
+    "name": "Italy South",
+    "lon": 17.0,
+    "lat": 40.0
+  },
+  {
+    "id": "reg_poland",
+    "name": "Poland",
+    "lon": 19.0,
+    "lat": 52.0
+  },
+  {
+    "id": "reg_czechia_slovakia",
+    "name": "Czechia Slovakia",
+    "lon": 19.0,
+    "lat": 48.5
+  },
+  {
+    "id": "reg_hungary_croatia",
+    "name": "Hungary Croatia",
+    "lon": 18.0,
+    "lat": 46.5
+  },
+  {
+    "id": "reg_romania",
+    "name": "Romania",
+    "lon": 26.0,
+    "lat": 45.5
+  },
+  {
+    "id": "reg_bulgaria_greece",
+    "name": "Bulgaria Greece",
+    "lon": 24.0,
+    "lat": 40.0
+  },
+  {
+    "id": "reg_serbia_albania",
+    "name": "Serbia Albania",
+    "lon": 21.0,
+    "lat": 43.5
+  },
+  {
+    "id": "reg_ukraine_west",
+    "name": "Ukraine West",
+    "lon": 27.0,
+    "lat": 48.0
+  },
+  {
+    "id": "reg_ukraine_east",
+    "name": "Ukraine East",
+    "lon": 36.0,
+    "lat": 48.0
+  },
+  {
+    "id": "reg_belarus",
+    "name": "Belarus",
+    "lon": 29.0,
+    "lat": 54.0
+  },
+  {
+    "id": "reg_baltics",
+    "name": "Baltics",
+    "lon": 25.0,
+    "lat": 57.0
+  },
+  {
+    "id": "reg_russia_central",
+    "name": "Russia Central",
+    "lon": 40.0,
+    "lat": 56.0
+  },
+  {
+    "id": "reg_russia_northwest",
+    "name": "Russia Northwest",
+    "lon": 40.0,
+    "lat": 64.0
+  },
+  {
+    "id": "reg_russia_volga",
+    "name": "Russia Volga",
+    "lon": 51.0,
+    "lat": 54.0
+  },
+  {
+    "id": "reg_russia_south",
+    "name": "Russia South",
+    "lon": 46.0,
+    "lat": 47.0
+  },
+  {
+    "id": "reg_caucasus",
+    "name": "Caucasus",
+    "lon": 45.0,
+    "lat": 41.0
+  },
+  {
+    "id": "reg_kazakhstan",
+    "name": "Kazakhstan",
+    "lon": 67.0,
+    "lat": 48.0
+  },
+  {
+    "id": "reg_uzbekistan_tajikistan",
+    "name": "Uzbekistan Tajikistan",
+    "lon": 66.0,
+    "lat": 40.0
+  },
+  {
+    "id": "reg_turkmenistan",
+    "name": "Turkmenistan",
+    "lon": 57.0,
+    "lat": 37.0
+  },
+  {
+    "id": "reg_siberia_west",
+    "name": "Siberia West",
+    "lon": 75.0,
+    "lat": 62.5
+  },
+  {
+    "id": "reg_siberia_south",
+    "name": "Siberia South",
+    "lon": 102.0,
+    "lat": 53.0
+  },
+  {
+    "id": "reg_siberia_central",
+    "name": "Siberia Central",
+    "lon": 104.0,
+    "lat": 63.5
+  },
+  {
+    "id": "reg_siberia_east",
+    "name": "Siberia East",
+    "lon": 141.5,
+    "lat": 63.5
+  },
+  {
+    "id": "reg_russia_far_east",
+    "name": "Russia Far East",
+    "lon": 155.0,
+    "lat": 50.0
+  },
+  {
+    "id": "reg_russia_yakutia",
+    "name": "Russia Yakutia",
+    "lon": 129.0,
+    "lat": 68.0
+  },
+  {
+    "id": "reg_turkey_west",
+    "name": "Turkey West",
+    "lon": 31.0,
+    "lat": 39.0
+  },
+  {
+    "id": "reg_turkey_east",
+    "name": "Turkey East",
+    "lon": 41.0,
+    "lat": 39.0
+  },
+  {
+    "id": "reg_georgia_armenia",
+    "name": "Georgia Armenia",
+    "lon": 44.0,
+    "lat": 41.0
+  },
+  {
+    "id": "reg_azerbaijan",
+    "name": "Azerbaijan",
+    "lon": 49.0,
+    "lat": 41.0
+  },
+  {
+    "id": "reg_syria_lebanon",
+    "name": "Syria Lebanon",
+    "lon": 38.0,
+    "lat": 35.0
+  },
+  {
+    "id": "reg_israel_jordan",
+    "name": "Israel Jordan",
+    "lon": 36.0,
+    "lat": 31.0
+  },
+  {
+    "id": "reg_iraq",
+    "name": "Iraq",
+    "lon": 44.0,
+    "lat": 33.0
+  },
+  {
+    "id": "reg_iran_north",
+    "name": "Iran North",
+    "lon": 53.0,
+    "lat": 38.0
+  },
+  {
+    "id": "reg_iran_south",
+    "name": "Iran South",
+    "lon": 56.0,
+    "lat": 29.0
+  },
+  {
+    "id": "reg_iran_central",
+    "name": "Iran Central",
+    "lon": 58.0,
+    "lat": 32.0
+  },
+  {
+    "id": "reg_saudi_arabia",
+    "name": "Saudi Arabia",
+    "lon": 44.0,
+    "lat": 23.0
+  },
+  {
+    "id": "reg_yemen",
+    "name": "Yemen",
+    "lon": 49.0,
+    "lat": 16.0
+  },
+  {
+    "id": "reg_oman_uae",
+    "name": "Oman Uae",
+    "lon": 57.0,
+    "lat": 20.0
+  },
+  {
+    "id": "reg_egypt",
+    "name": "Egypt",
+    "lon": 31.0,
+    "lat": 26.0
+  },
+  {
+    "id": "reg_libya",
+    "name": "Libya",
+    "lon": 18.0,
+    "lat": 27.0
+  },
+  {
+    "id": "reg_algeria_tunisia",
+    "name": "Algeria Tunisia",
+    "lon": 6.0,
+    "lat": 29.0
+  },
+  {
+    "id": "reg_morocco",
+    "name": "Morocco",
+    "lon": -5.0,
+    "lat": 33.0
+  },
+  {
+    "id": "reg_mauritania_sahara",
+    "name": "Mauritania Sahara",
+    "lon": -10.0,
+    "lat": 24.0
+  },
+  {
+    "id": "reg_sahel_north",
+    "name": "Sahel North",
+    "lon": 10.0,
+    "lat": 16.0
+  },
+  {
+    "id": "reg_chad",
+    "name": "Chad",
+    "lon": 19.0,
+    "lat": 14.0
+  },
+  {
+    "id": "reg_sudan",
+    "name": "Sudan",
+    "lon": 30.0,
+    "lat": 16.0
+  },
+  {
+    "id": "reg_south_sudan",
+    "name": "South Sudan",
+    "lon": 32.0,
+    "lat": 8.0
+  },
+  {
+    "id": "reg_eritrea",
+    "name": "Eritrea",
+    "lon": 41.0,
+    "lat": 17.0
+  },
+  {
+    "id": "reg_ethiopia",
+    "name": "Ethiopia",
+    "lon": 41.0,
+    "lat": 10.0
+  },
+  {
+    "id": "reg_somalia",
+    "name": "Somalia",
+    "lon": 47.0,
+    "lat": 6.0
+  },
+  {
+    "id": "reg_kenya",
+    "name": "Kenya",
+    "lon": 39.0,
+    "lat": 0.0
+  },
+  {
+    "id": "reg_tanzania",
+    "name": "Tanzania",
+    "lon": 35.0,
+    "lat": -8.0
+  },
+  {
+    "id": "reg_uganda",
+    "name": "Uganda",
+    "lon": 33.0,
+    "lat": 1.0
+  },
+  {
+    "id": "reg_drc_north",
+    "name": "Drc North",
+    "lon": 25.0,
+    "lat": 2.0
+  },
+  {
+    "id": "reg_drc_south",
+    "name": "Drc South",
+    "lon": 24.0,
+    "lat": -8.0
+  },
+  {
+    "id": "reg_angola",
+    "name": "Angola",
+    "lon": 17.0,
+    "lat": -12.0
+  },
+  {
+    "id": "reg_zambia",
+    "name": "Zambia",
+    "lon": 28.0,
+    "lat": -13.0
+  },
+  {
+    "id": "reg_zimbabwe_mozambique",
+    "name": "Zimbabwe Mozambique",
+    "lon": 35.0,
+    "lat": -20.0
+  },
+  {
+    "id": "reg_namibia_botswana",
+    "name": "Namibia Botswana",
+    "lon": 21.0,
+    "lat": -23.0
+  },
+  {
+    "id": "reg_south_africa",
+    "name": "South Africa",
+    "lon": 25.0,
+    "lat": -31.0
+  },
+  {
+    "id": "reg_senegal_guinea",
+    "name": "Senegal Guinea",
+    "lon": -10.0,
+    "lat": 10.0
+  },
+  {
+    "id": "reg_liberia_ivory_coast",
+    "name": "Liberia Ivory Coast",
+    "lon": -6.0,
+    "lat": 7.0
+  },
+  {
+    "id": "reg_ghana_togo",
+    "name": "Ghana Togo",
+    "lon": 1.0,
+    "lat": 7.0
+  },
+  {
+    "id": "reg_nigeria",
+    "name": "Nigeria",
+    "lon": 9.0,
+    "lat": 8.0
+  },
+  {
+    "id": "reg_cameroon_gabon",
+    "name": "Cameroon Gabon",
+    "lon": 12.0,
+    "lat": 2.0
+  },
+  {
+    "id": "reg_congo_eq_guinea",
+    "name": "Congo Eq Guinea",
+    "lon": 16.0,
+    "lat": -2.0
+  },
+  {
+    "id": "reg_madagascar",
+    "name": "Madagascar",
+    "lon": 47.0,
+    "lat": -19.0
+  },
+  {
+    "id": "reg_afghanistan",
+    "name": "Afghanistan",
+    "lon": 68.0,
+    "lat": 33.0
+  },
+  {
+    "id": "reg_pakistan",
+    "name": "Pakistan",
+    "lon": 68.0,
+    "lat": 26.0
+  },
+  {
+    "id": "reg_india_north",
+    "name": "India North",
+    "lon": 81.0,
+    "lat": 30.0
+  },
+  {
+    "id": "reg_india_central",
+    "name": "India Central",
+    "lon": 77.0,
+    "lat": 22.0
+  },
+  {
+    "id": "reg_india_west",
+    "name": "India West",
+    "lon": 72.0,
+    "lat": 18.0
+  },
+  {
+    "id": "reg_india_south",
+    "name": "India South",
+    "lon": 76.0,
+    "lat": 13.0
+  },
+  {
+    "id": "reg_india_east",
+    "name": "India East",
+    "lon": 83.0,
+    "lat": 22.0
+  },
+  {
+    "id": "reg_nepal_bhutan",
+    "name": "Nepal Bhutan",
+    "lon": 86.0,
+    "lat": 28.0
+  },
+  {
+    "id": "reg_bangladesh",
+    "name": "Bangladesh",
+    "lon": 91.0,
+    "lat": 23.0
+  },
+  {
+    "id": "reg_sri_lanka",
+    "name": "Sri Lanka",
+    "lon": 81.0,
+    "lat": 8.0
+  },
+  {
+    "id": "reg_myanmar",
+    "name": "Myanmar",
+    "lon": 97.0,
+    "lat": 21.0
+  },
+  {
+    "id": "reg_mongolia",
+    "name": "Mongolia",
+    "lon": 104.0,
+    "lat": 45.0
+  },
+  {
+    "id": "reg_china_xinjiang",
+    "name": "China Xinjiang",
+    "lon": 82.0,
+    "lat": 41.0
+  },
+  {
+    "id": "reg_china_tibet",
+    "name": "China Tibet",
+    "lon": 91.0,
+    "lat": 31.0
+  },
+  {
+    "id": "reg_china_northeast",
+    "name": "China Northeast",
+    "lon": 127.0,
+    "lat": 47.0
+  },
+  {
+    "id": "reg_china_north",
+    "name": "China North",
+    "lon": 114.0,
+    "lat": 40.0
+  },
+  {
+    "id": "reg_china_east",
+    "name": "China East",
+    "lon": 120.0,
+    "lat": 32.0
+  },
+  {
+    "id": "reg_china_south",
+    "name": "China South",
+    "lon": 113.0,
+    "lat": 25.0
+  },
+  {
+    "id": "reg_china_sichuan",
+    "name": "China Sichuan",
+    "lon": 103.0,
+    "lat": 30.0
+  },
+  {
+    "id": "reg_taiwan",
+    "name": "Taiwan",
+    "lon": 122.0,
+    "lat": 24.0
+  },
+  {
+    "id": "reg_korea_north",
+    "name": "Korea North",
+    "lon": 128.0,
+    "lat": 41.0
+  },
+  {
+    "id": "reg_korea_south",
+    "name": "Korea South",
+    "lon": 128.0,
+    "lat": 37.0
+  },
+  {
+    "id": "reg_japan_west",
+    "name": "Japan West",
+    "lon": 132.0,
+    "lat": 33.0
+  },
+  {
+    "id": "reg_japan_central",
+    "name": "Japan Central",
+    "lon": 137.0,
+    "lat": 37.0
+  },
+  {
+    "id": "reg_japan_north",
+    "name": "Japan North",
+    "lon": 143.0,
+    "lat": 43.0
+  },
+  {
+    "id": "reg_inner_mongolia",
+    "name": "Inner Mongolia",
+    "lon": 114.0,
+    "lat": 44.0
+  },
+  {
+    "id": "reg_thailand_laos",
+    "name": "Thailand Laos",
+    "lon": 101.0,
+    "lat": 15.0
+  },
+  {
+    "id": "reg_cambodia_vietnam",
+    "name": "Cambodia Vietnam",
+    "lon": 106.0,
+    "lat": 14.0
+  },
+  {
+    "id": "reg_malaysia",
+    "name": "Malaysia",
+    "lon": 110.0,
+    "lat": 4.0
+  },
+  {
+    "id": "reg_philippines",
+    "name": "Philippines",
+    "lon": 122.0,
+    "lat": 14.0
+  },
+  {
+    "id": "reg_sumatra",
+    "name": "Sumatra",
+    "lon": 101.0,
+    "lat": 0.0
+  },
+  {
+    "id": "reg_java_bali",
+    "name": "Java Bali",
+    "lon": 110.0,
+    "lat": -7.0
+  },
+  {
+    "id": "reg_borneo",
+    "name": "Borneo",
+    "lon": 115.0,
+    "lat": 2.0
+  },
+  {
+    "id": "reg_indonesia_east",
+    "name": "Indonesia East",
+    "lon": 131.0,
+    "lat": -4.0
+  },
+  {
+    "id": "reg_new_guinea",
+    "name": "New Guinea",
+    "lon": 136.0,
+    "lat": -5.0
+  },
+  {
+    "id": "reg_indochina_coast",
+    "name": "Indochina Coast",
+    "lon": 106.0,
+    "lat": 7.0
+  },
+  {
+    "id": "reg_australia_west",
+    "name": "Australia West",
+    "lon": 121.0,
+    "lat": -29.0
+  },
+  {
+    "id": "reg_australia_north",
+    "name": "Australia North",
+    "lon": 135.0,
+    "lat": -18.0
+  },
+  {
+    "id": "reg_australia_south",
+    "name": "Australia South",
+    "lon": 141.0,
+    "lat": -30.0
+  },
+  {
+    "id": "reg_new_zealand",
+    "name": "New Zealand",
+    "lon": 171.0,
+    "lat": -41.0
+  },
+  {
+    "id": "reg_pacific_islands_west",
+    "name": "Pacific Islands West",
+    "lon": 156.0,
+    "lat": 0.0
+  },
+  {
+    "id": "reg_pacific_islands_east",
+    "name": "Pacific Islands East",
+    "lon": 170.0,
+    "lat": -2.0
+  },
+  {
+    "id": "reg_arctic",
+    "name": "Arctic",
+    "lon": 0.0,
+    "lat": 79.0
+  },
+  {
+    "id": "reg_antarctica",
+    "name": "Antarctica",
+    "lon": 0.0,
+    "lat": -76.0
+  },
+  {
+    "id": "sea_arctic",
+    "name": "Arctic Ocean",
+    "lon": 0.0,
+    "lat": 77.5
+  },
+  {
+    "id": "sea_north_atlantic",
+    "name": "North Atlantic Ocean",
+    "lon": -42.5,
+    "lat": 42.5
+  },
+  {
+    "id": "sea_south_atlantic",
+    "name": "South Atlantic Ocean",
+    "lon": -17.5,
+    "lat": -17.5
+  },
+  {
+    "id": "sea_mediterranean",
+    "name": "Mediterranean Sea",
+    "lon": 15.5,
+    "lat": 38.0
+  },
+  {
+    "id": "sea_north_pacific_west",
+    "name": "North Pacific West",
+    "lon": 150.0,
+    "lat": 42.5
+  },
+  {
+    "id": "sea_north_pacific_east",
+    "name": "North Pacific East",
+    "lon": -140.0,
+    "lat": 42.5
+  },
+  {
+    "id": "sea_pacific_west",
+    "name": "Western Pacific Ocean",
+    "lon": 150.0,
+    "lat": 0.0
+  },
+  {
+    "id": "sea_pacific_east",
+    "name": "Eastern Pacific Ocean",
+    "lon": -127.5,
+    "lat": 0.0
+  },
+  {
+    "id": "sea_south_pacific_west",
+    "name": "South Pacific West",
+    "lon": 155.0,
+    "lat": -42.5
+  },
+  {
+    "id": "sea_south_pacific_east",
+    "name": "South Pacific East",
+    "lon": -127.5,
+    "lat": -42.5
+  },
+  {
+    "id": "sea_indian_north",
+    "name": "North Indian Ocean",
+    "lon": 70.0,
+    "lat": 10.0
+  },
+  {
+    "id": "sea_indian_south",
+    "name": "South Indian Ocean",
+    "lon": 65.0,
+    "lat": -35.0
+  },
+  {
+    "id": "sea_southern",
+    "name": "Southern Ocean",
+    "lon": 0.0,
+    "lat": -60.0
+  }
+]

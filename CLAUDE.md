@@ -9,14 +9,15 @@ Do not run `git commit`, I check all commits. Use `git status` to check if I hav
 Read and edit anything in the base folder, access anything on public internet
 Before a change update respective specs in docs/
 Add a test for each spec update
-When using browser client, use headless version
+When using browser client, use headless version, the site is available at https://cnspr.github.io
 
-## Two-Repo Structure
+## Three-Repo Structure
 
-The game is split across two repositories:
+The game is split across three repositories:
 
-- **`conspiracy`** — world state + CI workflow. Players fork this. Contains `world/` and `process-turn.yml`. The workflow checks out `conspiracy-game` at runtime to run the simulation.
-- **`conspiracy-game`** — this repo. Client, engine, docs. Only the game master pushes here. Deployed to GitHub Pages.
+- **`cnspr/world`** — world state + CI workflow. Players fork this. Contains player dirs and `process-turn.yml`. The workflow checks out `cnspr/engine` at runtime to run the simulation.
+- **`cnspr/engine`** — this repo. Python engine, docs, and static `world/map.json`. Only the game master pushes here.
+- **`cnspr/cnspr.github.io`** — browser client. Deployed to GitHub Pages at https://cnspr.github.io.
 
 ## Commands
 
@@ -34,16 +35,16 @@ pytest engine/tests/test_simulation.py::test_name -v
 python -m engine.main <userid> <turn>
 ```
 
-The browser client (`static/`) is vanilla HTML/CSS/JS — no build step.
+The browser client (`cnspr/cnspr.github.io`) is vanilla HTML/CSS/JS — no build step.
 
-**Live deployment:** https://leshikus.github.io/conspiracy-game/ — use this URL with Playwright to test client-side bugs.
+**Live deployment:** https://cnspr.github.io — use this URL with Playwright to test client-side bugs.
 
 ## Architecture
 
 ### Turn Resolution Pipeline
 
-1. Player submits `world/<userid>/orders/turn.json` as a PR to their fork of `conspiracy`
-2. `process-turn.yml` triggers, checks out `conspiracy-game`, runs `python -m engine.main <userid> <turn>`
+1. Player submits `<userid>/orders/turn.json` as a PR to their fork of `cnspr/world`
+2. `process-turn.yml` triggers, checks out `cnspr/engine`, runs `python -m engine.main <userid> <turn>`
 3. Engine loads world state, validates orders, simulates the turn (deterministically via seed), writes updated JSON + `history/events.log` + `history/stats_NNNN.json`
 4. CI commits and auto-merges the PR
 
@@ -52,26 +53,24 @@ The browser client (`static/`) is vanilla HTML/CSS/JS — no build step.
 - `models.py` — Pydantic schemas for all world state (`PlayerWorld`, `Hero`, `Faction`, `Region`, `Army`, `Economy`, `BeliefIndex`, `SharedWorld`)
 - `orders.py` — `OrderType` enum + validation logic; order costs (recruit hero: 20 trust, raise army: 30 trust)
 - `simulation.py` — `resolve_turn(world, orders, seed)` is the core pure function; resolution phases: apply orders → economy tick → belief tick → faction AI tick → hero mutation → army upkeep → global event roll → increment turn
-- `loader.py` — File I/O: reads/writes `world/<userid>/*.json` and shared state
+- `loader.py` — File I/O: reads/writes `<userid>/*.json` and shared state; loads `world/map.json` from this repo
 - `main.py` — CLI entry point; orchestrates load → validate → resolve → persist; exits 1 on validation failure
 
-### Browser Client (`static/js/`)
+### Browser Client (`cnspr/cnspr.github.io/js/`)
 
 - `app.js` — Root controller; wires panels, manages config, drives world load/render cycle
-- `github.js` — All GitHub API calls (fetch world JSON, load event log, submit orders as PR)
+- `github.js` — All GitHub API calls (fetch world JSON, load event log, submit orders as PR); fetches `world/map.json` from `cnspr/engine` via raw GitHub URL
 - `mapview.js` — Canvas map renderer
-- `orderspanel.js` — Order composition UI; submits orders as a PR to the player's fork of `conspiracy`
+- `orderspanel.js` — Order composition UI; submits orders as a PR to the player's fork of `cnspr/world`
 - `eventviewer.js` / `statspanel.js` — Read-only views of `history/events.log` and `history/stats_*.json`
 
 ### World State Layout
 
-Lives in the `conspiracy` repo (player forks):
-
 ```
-# conspiracy-game repo (this repo):
-static/world/map.json      # Static region topology: id, name, adjacency, lon/lat (game master only)
+# cnspr/engine repo (this repo):
+world/map.json             # Static region topology: id, name, adjacency, lon/lat (game master only)
 
-# conspiracy repo (player forks):
+# cnspr/world repo (player forks):
 shared/world.json          # Global state: current turn, deadline, player list
 shared/regions.json        # Dynamic region state: faction_influence, population, prosperity, unrest
 <userid>/
@@ -87,4 +86,4 @@ shared/regions.json        # Dynamic region state: faction_influence, population
 - All game logic lives in Python — the browser has no simulation state
 - `resolve_turn` is deterministic: same seed + same input = same output (enforced by tests)
 - GitHub is the entire infrastructure: storage, CI, and API protocol
-- Players can only affect `conspiracy` (world repo) via PRs — client and engine are unreachable
+- Players can only affect `cnspr/world` (world repo) via PRs — client and engine are unreachable

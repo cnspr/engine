@@ -16,7 +16,7 @@ Thin wrapper around `localStorage` for persisting the client configuration objec
 ```js
 {
   github_token:    string,   // PAT (ghp_…)
-  github_repo:     string,   // "owner/conspiracy" (player's fork)
+  github_repo:     string,   // "owner/world" (player's fork)
   userid:          string,   // GitHub username
   mubert_key:      string,   // optional Mubert API key
 

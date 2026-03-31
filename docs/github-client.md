@@ -28,7 +28,7 @@ new GitHubClient({ token, repo })
 | Param | Type | Description |
 |---|---|---|
 | `token` | string | GitHub PAT (`ghp_…`) |
-| `repo` | string | `"owner/repo"` — the authenticated user's fork of `conspiracy` |
+| `repo` | string | `"owner/repo"` — the authenticated user's fork of `world` |
 
 ### 3.2 World state loading
 
@@ -60,11 +60,11 @@ Walks the git tree (`GET /repos/{repo}/git/trees/main?recursive=1`) to discover 
 
 #### `forkCanonical() → object`
 
-`POST /repos/{repo}/forks` — forks the canonical `conspiracy` repo into the authenticated user's account. Returns the fork object. GitHub creates forks asynchronously; callers must poll `isForkReady()` after this.
+`POST /repos/{repo}/forks` — forks the canonical `world` repo into the authenticated user's account. Returns the fork object. GitHub creates forks asynchronously; callers must poll `isForkReady()` after this.
 
 #### `isForkReady(userid) → boolean`
 
-`GET /repos/{userid}/conspiracy` — returns `true` once the fork is accessible, `false` otherwise (never throws).
+`GET /repos/{userid}/world` — returns `true` once the fork is accessible, `false` otherwise (never throws).
 
 #### `initWorldBranch(userid) → string`
 
