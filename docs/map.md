@@ -152,9 +152,13 @@ Region polygons are **not hand-authored**. They are computed once at startup fro
 
 Every region (land, sea, and polar) has a seed `(lon, lat)` in `map.json`. Sea regions are included as seeds even though they are not rendered — their seeds act as bisector anchors that bound the cells of adjacent coastal land regions.
 
-**Delaunay triangulation.** For every triple of seeds `(i, j, k)`, the two candidate points on the sphere equidistant from all three are computed as the intersection of the bisector planes `(a−b)` and `(b−c)` (cross product of their normals, normalised). A candidate vertex is valid — and the triple forms a Delaunay triangle — if and only if no other seed is closer to that point than the three defining seeds. Each valid vertex is shared among exactly the three cells it belongs to, so adjacent cell borders share identical coordinates with no floating-point drift.
+**Delaunay triangulation via 3-D convex hull.** For points on the unit sphere, the 3-D convex hull of those points is exactly the spherical Delaunay triangulation (Guibas & Stolfi 1985): every convex hull face is a Delaunay triangle, and every Delaunay edge is a hull edge.
 
-**Adjacency from triangulation.** Every edge `(i, j)` of a Delaunay triangle is a Delaunay edge, meaning those two seeds are natural neighbours. The full adjacency graph is collected during the triple enumeration at no extra cost.
+The hull is built by randomised incremental insertion with conflict lists (de Berg et al. §11.2), expected **O(n log n)** time. Each uninserted point tracks a conflict list — the hull faces currently visible from it. On insertion: collect visible faces from the conflict list (BFS extends for numerical robustness), find the horizon, attach a cone of new faces, and bootstrap each new face's conflict list from the two faces that shared its base horizon edge (any point seeing the new face must have seen one of those two).
+
+**Voronoi vertices from hull faces.** For each hull face (a, b, c) listed CCW from outside, the Voronoi vertex shared by the three adjacent cells is the outward unit normal `normalize((b−a)×(c−a))`. Equidistance: `N = (b−a)×(c−a)` is perpendicular to both `(b−a)` and `(c−a)`, giving `N·a = N·b = N·c` — equal dot-product with all three seeds, equal geodesic distance on the sphere.
+
+**Adjacency.** Every hull edge `(i, j)` is a Delaunay edge; the adjacency graph is a free by-product of triangulation.
 
 **Voronoi cells.** Each seed's Voronoi cell is the convex hull (on the sphere) of all valid vertices belonging to that seed. Vertices are sorted by angle around the seed's tangent frame, then each polygon edge is subdivided along the great circle arc connecting its endpoints (SLERP, at most 4° per segment) so edges follow the sphere surface rather than cutting through it when rendered.
 
