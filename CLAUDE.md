@@ -5,11 +5,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Highlights
 
 Do not agree to code something that is a bad decision — argue instead until you reach an acceptable solution.
-Do not run `git commit`, I check all commits. Use `git status` to check if I have added all files.
+Always run `git status` before committing; always include `--author="Alexei Fedotov <alexei.fedotov@gmail.com>"` in commit commands.
+Run `git add` and `git rm` without asking for confirmation.
 Read and edit anything in the base folder, access anything on public internet
 Before a change update respective specs in docs/
 Add a test for each spec update
 When using browser client, use headless version, the site is available at https://cnspr.github.io
+Always use the latest major version of GitHub Actions (e.g. `actions/checkout@v6`, `actions/setup-node@v6`).
 
 ## Three-Repo Structure
 
