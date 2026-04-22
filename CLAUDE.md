@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Highlights
 
 Do not agree to code something that is a bad decision — argue instead until you reach an acceptable solution.
-Always run `git status` before committing; always include `--author="Alexei Fedotov <alexei.fedotov@gmail.com>"` in commit commands.
+Always run `git status` before committing; always include `--author="Alexei Fedotov <alexei.fedotov@gmail.com>"` in commit commands. Never add Co-authored-by lines to commit messages.
 Run `git add` and `git rm` without asking for confirmation.
 Read and edit anything in the base folder, access anything on public internet
 Before a change update respective specs in docs/
@@ -15,11 +15,11 @@ Always use the latest major version of GitHub Actions (e.g. `actions/checkout@v6
 
 ## Three-Repo Structure
 
-The game is split across three repositories:
+The game is split across three repositories, each a subdirectory of the working directory:
 
-- **`cnspr/world`** — world state + CI workflow. Players fork this. Contains player dirs and `process-turn.yml`. The workflow checks out `cnspr/engine` at runtime to run the simulation.
-- **`cnspr/engine`** — this repo. Python engine, docs, and static `world/map.json`. Only the game master pushes here.
-- **`cnspr/cnspr.github.io`** — browser client. Deployed to GitHub Pages at https://cnspr.github.io.
+- **`cnspr/world`** (`world/`) — world state + CI workflow. Players fork this. Contains player dirs and `process-turn.yml`. The workflow checks out `cnspr/engine` at runtime to run the simulation.
+- **`cnspr/engine`** (`engine/`) — this repo. Python engine, docs, and static `world/map.json`. Only the game master pushes here.
+- **`cnspr/cnspr.github.io`** (`cnspr.github.io/`) — browser client. Deployed to GitHub Pages at https://cnspr.github.io.
 
 ## Commands
 
