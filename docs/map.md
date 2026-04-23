@@ -209,15 +209,28 @@ The fill colour of each region changes with the active view mode:
 
 | Mode | Fill |
 |---|---|
-| `political` | Faction colour (dimmed unless hovered) |
+| `political` | Faction colour (dimmed unless hovered); Natural Earth country background layer visible |
 | `population` | Blue heat map (log scale, 0 → 1400M) |
 | `unrest` | Green → amber → red (0 → 80) |
 | `prosperity` | Red → amber → green (0 → 100) |
 
-### 8.4 Callback
+### 8.4 Political View — Country Layer
+
+In `political` mode a Natural Earth 110m country polygon layer is rendered beneath game regions, coloured by continent (`CONTINENT_PALETTE`). Hovering a country highlights it; clicking shows an info panel with flag emoji, name, continent, population, full name, and sovereignty. Clicking a game region or switching views clears the selection.
+
+Exported helpers:
+- `CONTINENT_PALETTE` — `{ fill, bright }` per continent name
+- `flagEmoji(iso2)` — regional indicator emoji from ISO 3166-1 alpha-2
+- `fmtPop(n)` — number → `"X.X B"` / `"X.X M"` / `"—"`
+
+### 8.5 Callbacks
 
 ```js
-new MapView(canvas, (region) => { /* region or null on deselect */ })
+new MapView(
+  canvas,
+  (region) => { /* region or null on game-region deselect */ },
+  (countryProps) => { /* Natural Earth props or null; only fires in political view */ },
+)
 ```
 
 ---
