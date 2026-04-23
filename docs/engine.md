@@ -65,15 +65,17 @@ Regions are contested territory — no single player owns them. Each faction hol
 
 ```
 Region:
-  id, name
+  # Static — from engine/world/map.json
+  id, name, lon, lat
+  archetype:           str | None   # "federation" | "syndicate" | "conspiracy" | null
+  # Dynamic — from world/shared/regions.json
   faction_influence:   dict[faction_id → float]   # 0.0–1.0 per faction
-  adjacent_region_ids: list[str]
   population:          int
   prosperity:          int (0–100)
   unrest:              int (0–100)
 ```
 
-The **dominant faction** — the one with the highest influence share — determines the region's political colour on the map and is the default target for propaganda orders. Multiple factions can hold meaningful shares simultaneously.
+`archetype` is the region's natural political character (static world-building data). The **dominant faction** — the one with the highest influence share — determines the map colour when any faction is present; `archetype` provides the default colour before factions establish presence. Multiple factions can hold meaningful shares simultaneously.
 
 ### 3.5 Economy
 

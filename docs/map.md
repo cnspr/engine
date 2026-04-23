@@ -136,7 +136,18 @@ lat0 -= dy · dpp
 
 ### 7.1 Region Seeds
 
-Each geographic region is defined by a **center seed** `(lon, lat)` in degrees, stored in `map.json`. Seeds are derived from real-world bounding boxes as `((W+E)/2, (N+S)/2)` and are also hardcoded in `GEO_REGIONS` in `mapview.js` for use by the overlay renderer. The canonical source is `map.json`.
+Each geographic region is defined by a **center seed** `(lon, lat)` in degrees, stored in `map.json`. `map.json` is the canonical source for all static region data:
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | string | Unique region identifier (snake_case, `reg_` prefix for land, `sea_` for oceans) |
+| `name` | string | Display name |
+| `lon` | float | Seed longitude |
+| `lat` | float | Seed latitude |
+| `country` | string \| null | Country or geopolitical bloc this region belongs to (groups regions for political-view selection) |
+| `archetype` | string \| null | Default government type: `"federation"`, `"syndicate"`, or `"conspiracy"` |
+
+Sea regions (`sea_*`) and `reg_arctic` have no `country` or `archetype`. All regions in the same country share the same `archetype` value.
 
 ```js
 GEO_REGIONS = {
@@ -207,16 +218,18 @@ Because Voronoi cells partition the plane completely, every visible point on the
 
 The fill colour of each region changes with the active view mode:
 
-| Mode | Fill |
-|---|---|
-| `political` | Faction colour (dimmed unless hovered); Natural Earth country background layer visible |
-| `population` | Blue heat map (log scale, 0 → 1400M) |
-| `unrest` | Green → amber → red (0 → 80) |
-| `prosperity` | Red → amber → green (0 → 100) |
+| Mode | Selection unit | Fill |
+|---|---|---|
+| `political` | Country (all regions in same `country` group) | Archetype colour (`federation`→blue, `syndicate`→amber, `conspiracy`→purple); Natural Earth background |
+| `population` | Individual region | Blue heat map (log scale, 0 → 1400M) |
+| `unrest` | Individual region | Green → amber → red (0 → 80) |
+| `prosperity` | Individual region | Red → amber → green (0 → 100) |
 
-### 8.4 Political View — Country Layer
+### 8.4 Political View — Country Selection
 
-In `political` mode a Natural Earth 110m country polygon layer is rendered beneath game regions, coloured by continent (`CONTINENT_PALETTE`). Hovering a country highlights it; clicking shows an info panel with flag emoji, name, continent, population, full name, and sovereignty. Clicking a game region or switching views clears the selection.
+In `political` mode clicking a game region selects the **entire country** it belongs to (all regions sharing the same `country` value). The right panel shows country-level info (population total, avg unrest, avg prosperity, faction presence across all regions). The left panel shows government orders (propaganda, tax, deployment) available to any faction active in the country — influence level affects order effectiveness, not availability.
+
+A Natural Earth 110m country polygon layer is rendered beneath game regions, coloured by continent (`CONTINENT_PALETTE`). Clicking the Natural Earth background (ocean areas) is not supported and fires no callback.
 
 Exported helpers:
 - `CONTINENT_PALETTE` — `{ fill, bright }` per continent name

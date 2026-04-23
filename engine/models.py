@@ -91,6 +91,8 @@ class Region(BaseModel):
     name: str
     lon: Optional[float] = None
     lat: Optional[float] = None
+    country: Optional[str] = None       # country/bloc this region belongs to
+    archetype: Optional[str] = None     # "federation" | "syndicate" | "conspiracy"
     # Dynamic fields — sourced from world/shared/regions.json (written each turn)
     # No single owner — regions are contested. Each faction holds a share of influence.
     faction_influence: dict[str, float] = Field(default_factory=dict)

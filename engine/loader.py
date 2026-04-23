@@ -26,7 +26,7 @@ def _default_world_root() -> Path:
 WORLD_ROOT = _default_world_root()
 
 # Static fields carried by map.json
-_STATIC_FIELDS = {"id", "name", "lon", "lat"}
+_STATIC_FIELDS = {"id", "name", "lon", "lat", "country", "archetype"}
 
 
 def world_dir(userid: str) -> Path:

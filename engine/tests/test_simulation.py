@@ -254,3 +254,25 @@ def test_region_serialises_without_adjacent_field():
     r = Region(id="reg_test", name="Test", lon=10.0, lat=20.0)
     dumped = r.model_dump()
     assert "adjacent_region_ids" not in dumped
+
+
+def test_region_country_and_archetype_optional():
+    r = Region(id="reg_test", name="Test")
+    assert r.country is None
+    assert r.archetype is None
+
+
+def test_region_country_and_archetype_roundtrip():
+    r = Region(id="reg_test", name="Test", country="France", archetype="federation")
+    assert r.country == "France"
+    assert r.archetype == "federation"
+    d = r.model_dump()
+    assert d["country"] == "France"
+    assert d["archetype"] == "federation"
+
+
+def test_static_fields_not_written_to_dynamic_file():
+    """country and archetype are static; save_regions must not write them to regions.json."""
+    from engine.loader import _STATIC_FIELDS
+    assert "country"   in _STATIC_FIELDS
+    assert "archetype" in _STATIC_FIELDS
