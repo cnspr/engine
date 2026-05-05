@@ -24,6 +24,8 @@ class OrderType(str, Enum):
     # Military
     ARMY_DIRECTIVE     = "army_directive"       # issue strategic directive to army
     RAISE_ARMY         = "raise_army"           # recruit new army in region (costs trust)
+    # Military movement
+    MOVE_ARMY          = "move_army"            # move army to a target region
     # Research
     BEGIN_RESEARCH     = "begin_research"       # assign scholars to a tech
     # Infrastructure
@@ -43,6 +45,7 @@ class Order(BaseModel):
             OrderType.RECRUIT_HERO:    ["name", "role", "region_id"],
             OrderType.ARMY_DIRECTIVE:  ["army_id", "directive"],
             OrderType.RAISE_ARMY:      ["name", "region_id", "doctrine"],
+            OrderType.MOVE_ARMY:       ["army_id", "target_region_id"],
             OrderType.BEGIN_RESEARCH:  ["scholar_hero_id", "tech"],
             OrderType.BUILD:           ["region_id", "structure"],
         }
@@ -113,6 +116,12 @@ def validate_orders(orders: TurnOrders, world: PlayerWorld) -> list[str]:
                 errors.append(f"{tag}: unknown faction '{p['faction_id']}'")
             if not (0 <= int(p["value"]) <= 50):
                 errors.append(f"{tag}: propaganda value must be 0–50")
+
+        elif order.type == OrderType.MOVE_ARMY:
+            if p["army_id"] not in army_ids:
+                errors.append(f"{tag}: unknown army '{p['army_id']}'")
+            if p["target_region_id"] not in region_ids:
+                errors.append(f"{tag}: unknown target region '{p['target_region_id']}'")
 
         elif order.type == OrderType.LEVY_TAX:
             if p["region_id"] not in region_ids:

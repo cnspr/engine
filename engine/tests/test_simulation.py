@@ -276,3 +276,75 @@ def test_static_fields_not_written_to_dynamic_file():
     from engine.loader import _STATIC_FIELDS
     assert "country"   in _STATIC_FIELDS
     assert "archetype" in _STATIC_FIELDS
+
+
+# ---------------------------------------------------------------------------
+# Army movement
+# ---------------------------------------------------------------------------
+
+def test_move_army_changes_region():
+    world = make_world()
+    world.regions.append(Region(id="reg2", name="Ironhaven"))
+    orders = make_orders(orders=[
+        Order(type=OrderType.MOVE_ARMY, params={"army_id": "army1", "target_region_id": "reg2"}),
+    ])
+    result = resolve_turn(world, orders, seed=0)
+    assert result.world.armies[0].region_id == "reg2"
+
+
+def test_move_army_event_logged():
+    world = make_world()
+    world.regions.append(Region(id="reg2", name="Ironhaven"))
+    orders = make_orders(orders=[
+        Order(type=OrderType.MOVE_ARMY, params={"army_id": "army1", "target_region_id": "reg2"}),
+    ])
+    result = resolve_turn(world, orders, seed=0)
+    assert any("Ironhaven" in e for e in result.events)
+
+
+def test_move_army_unknown_army_ignored():
+    world = make_world()
+    world.regions.append(Region(id="reg2", name="Ironhaven"))
+    orders = make_orders(orders=[
+        Order(type=OrderType.MOVE_ARMY, params={"army_id": "ghost", "target_region_id": "reg2"}),
+    ])
+    result = resolve_turn(world, orders, seed=0)
+    assert result.world.armies[0].region_id == "reg1"
+
+
+def test_move_army_unknown_target_ignored():
+    world = make_world()
+    orders = make_orders(orders=[
+        Order(type=OrderType.MOVE_ARMY, params={"army_id": "army1", "target_region_id": "nowhere"}),
+    ])
+    result = resolve_turn(world, orders, seed=0)
+    assert result.world.armies[0].region_id == "reg1"
+
+
+def test_move_army_validation_unknown_army():
+    world = make_world()
+    orders = make_orders(orders=[
+        Order(type=OrderType.MOVE_ARMY, params={"army_id": "ghost", "target_region_id": "reg1"}),
+    ])
+    errors = validate_orders(orders, world)
+    assert any("unknown army" in e for e in errors)
+
+
+def test_move_army_validation_unknown_region():
+    world = make_world()
+    orders = make_orders(orders=[
+        Order(type=OrderType.MOVE_ARMY, params={"army_id": "army1", "target_region_id": "nowhere"}),
+    ])
+    errors = validate_orders(orders, world)
+    assert any("unknown target region" in e for e in errors)
+
+
+def test_move_army_is_deterministic():
+    world = make_world()
+    world.regions.append(Region(id="reg2", name="Ironhaven"))
+    orders = make_orders(orders=[
+        Order(type=OrderType.MOVE_ARMY, params={"army_id": "army1", "target_region_id": "reg2"}),
+    ])
+    r1 = resolve_turn(world, orders, seed=5)
+    r2 = resolve_turn(world, orders, seed=5)
+    assert r1.world.armies[0].region_id == r2.world.armies[0].region_id

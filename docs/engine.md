@@ -156,6 +156,7 @@ Regions are shared because they are contested territory with no single owner. Th
 | `recruit_hero` | Create new hero | `name`, `role`, `region_id` | 20 |
 | `army_directive` | Issue directive to army | `army_id`, `directive` | 0 |
 | `raise_army` | Recruit new army in region | `name`, `region_id`, `doctrine` | 30 |
+| `move_army` | Move army to a target region | `army_id`, `target_region_id` | 0 |
 | `begin_research` | Assign scholar to tech | `scholar_hero_id`, `tech` | 0 |
 | `build` | Construct structure in region | `region_id`, `structure` | 0 |
 
@@ -226,6 +227,8 @@ Handled by `_execute_directive()`. Supported directive strings:
 | `encircle` | Narrative result; outcome logged but no stat change |
 
 Success probability: `(competence + strength/2) / 150`. Paranoid commanders (>60) have a 40% chance to hesitate and skip execution.
+
+`army_directive` covers **tactical** outcomes within a region. **Strategic movement** between regions uses the `move_army` order instead (`army_id`, `target_region_id`). `move_army` sets `army.region_id` to the target; validation checks that both the army and target region exist. No trust cost; no adjacency constraint enforced by the engine (client presents only valid targets).
 
 ### 5.4 Global events table
 

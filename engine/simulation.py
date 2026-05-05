@@ -132,6 +132,16 @@ def _apply_orders(w: PlayerWorld, orders: TurnOrders, result: ResolutionResult, 
                 f"under {army.doctrine} doctrine."
             )
 
+        elif order.type == OrderType.MOVE_ARMY:
+            army   = _get_army(w, p["army_id"])
+            target = _get_region(w, p["target_region_id"])
+            if army and target:
+                origin = army.region_id
+                army.region_id = target.id
+                result.events.append(
+                    f"{army.name} marched from {origin} to {target.name}."
+                )
+
         elif order.type == OrderType.ARMY_DIRECTIVE:
             army = _get_army(w, p["army_id"])
             if army:
